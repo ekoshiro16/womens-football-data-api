@@ -1,5 +1,6 @@
 require("dotenv").config(); 
 const express = require("express");
+const { leagues } = require("../data_files/leagueData");
 const leaguesRouter = express.Router(); 
 
 leaguesRouter.get("/teams-by-season", async (req, res) => {
@@ -26,5 +27,28 @@ leaguesRouter.get("/teams-by-season", async (req, res) => {
         console.error(e)
     }
 });
+
+leaguesRouter.get("/standings-by-season", async (req, res) => {
+    try {
+        const { leagueId, season } = req.query;
+
+        const url = `https://api-football-v1.p.rapidapi.com/v3/standings?season=${parseInt(season)}&league=${parseInt(leagueId)}`;
+
+        const response = await fetch(url, { 
+            headers: {
+                'X-RapidAPI-Key': process.env.API_KEY,
+                'X-RapidAPI-Host': process.env.API_HOST
+            }
+        })
+
+        const data = await response.json(); 
+
+        if (data && data?.response) {
+            res.send(data.response); 
+        }
+    } catch (e) {
+        console.error(e); 
+    }
+})
 
 module.exports = leaguesRouter; 
