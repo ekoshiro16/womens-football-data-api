@@ -25,6 +25,11 @@ app.options('*', cors(corsOptions));
 
 // client.connect(); 
 
+// Subrouters
+const { leaguesRouter } = require("./routes");
+const { leagues } = require("./data_files/leagueData");
+app.use("/api/leagues", leaguesRouter); 
+
 const PORT = 3000;
 app.listen(PORT, () => {
     console.log(`Currently running on port ${PORT}`)
