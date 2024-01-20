@@ -9,7 +9,7 @@ const metadata = {
     }
 };
 
-playersRouter.get("/", async (req, res) => {
+playersRouter.get("/stats", async (req, res) => {
     try {
         const { playerId, season } = req.query; 
 
