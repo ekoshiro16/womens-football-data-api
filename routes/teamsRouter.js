@@ -1,6 +1,5 @@
 require("dotenv").config(); 
 const express = require("express");
-const { teams } = require("../data_files/leagueData");
 const teamsRouter = express.Router(); 
 
 const metadata = {

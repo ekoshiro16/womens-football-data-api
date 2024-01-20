@@ -28,9 +28,10 @@ app.options('*', cors(corsOptions));
 const { leagues, teams } = require("./data_files/leagueData");
 
 // Subrouters
-const { leaguesRouter, teamsRouter } = require("./routes");
+const { leaguesRouter, playersRouter, teamsRouter } = require("./routes");
 
 app.use("/api/leagues", leaguesRouter); 
+app.use("/api/players", playersRouter); 
 app.use("/api/teams", teamsRouter); 
 
 const PORT = 3000;
