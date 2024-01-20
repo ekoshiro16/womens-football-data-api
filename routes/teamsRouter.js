@@ -64,4 +64,22 @@ teamsRouter.get("/squad", async (req, res) => {
     }
 });
 
+teamsRouter.get("/fixtures", async (req, res) => {
+    try {
+        const { leagueId, season, teamId } = req.query; 
+
+        const url = `https://api-football-v1.p.rapidapi.com/v3/fixtures?league=${leagueId}&season=${season}&team=${teamId}`;
+
+        const response = await fetch(url, metadata);
+
+        const data = await response.json(); 
+
+        if (data && data?.response) {
+            res.send(data.response);
+        };
+    } catch (e) {
+        console.error(e); 
+    }
+});
+
 module.exports = teamsRouter; 
