@@ -33,7 +33,9 @@ app.use(morgan("dev"));
 //     allowedHeaders: ['Content-Type', 'Authorization'],
 // };
   
-app.use(cors({origin: true, credentials: true}));
+app.use(cors({
+    origin: "*"
+}));
 // app.options('*', cors(corsOptions));
 
 // client.connect(); 
