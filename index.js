@@ -15,7 +15,7 @@ app.use(express.json());
 app.use(morgan("dev"));
 
 const corsOptions = {
-    origin: 'http://localhost:5173',
+    origin: 'http://left-boot-api.onrender.com',
     methods: ['GET', 'POST', 'PATCH', 'PUT', 'DELETE', 'OPTIONS'],
     allowedHeaders: ['Content-Type', 'Authorization'],
 };
