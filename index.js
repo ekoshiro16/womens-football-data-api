@@ -14,11 +14,11 @@ app.use((req, res, next) => {
 app.use(express.json());
 app.use(morgan("dev"));
 
-const corsOptions = {
-    origin: 'http://left-boot-api.onrender.com',
-    methods: ['GET', 'POST', 'PATCH', 'PUT', 'DELETE', 'OPTIONS'],
-    allowedHeaders: ['Content-Type', 'Authorization'],
-};
+// const corsOptions = {
+//     origin: 'http://left-boot-api.onrender.com',
+//     methods: ['GET', 'POST', 'PATCH', 'PUT', 'DELETE', 'OPTIONS'],
+//     allowedHeaders: ['Content-Type', 'Authorization'],
+// };
 
 const corsOptions = {
     origin: function (origin, callback) {
