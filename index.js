@@ -20,21 +20,21 @@ app.use(morgan("dev"));
 //     allowedHeaders: ['Content-Type', 'Authorization'],
 // };
 
-const corsOptions = {
-    origin: function (origin, callback) {
-        const allowedOrigins = ['http://left-boot-api.onrender.com', 'http://localhost:5173'];
-        if (!origin || allowedOrigins.indexOf(origin) !== -1) {
-            callback(null, true);
-        } else {
-            callback(new Error('CORS policy violation'));
-        }
-    },
-    methods: ['GET', 'POST', 'PATCH', 'PUT', 'DELETE', 'OPTIONS'],
-    allowedHeaders: ['Content-Type', 'Authorization'],
-};
+// const corsOptions = {
+//     origin: function (origin, callback) {
+//         const allowedOrigins = ['http://left-boot-api.onrender.com', 'http://localhost:5173'];
+//         if (!origin || allowedOrigins.indexOf(origin) !== -1) {
+//             callback(null, true);
+//         } else {
+//             callback(new Error('CORS policy violation'));
+//         }
+//     },
+//     methods: ['GET', 'POST', 'PATCH', 'PUT', 'DELETE', 'OPTIONS'],
+//     allowedHeaders: ['Content-Type', 'Authorization'],
+// };
   
-app.use(cors(corsOptions));
-app.options('*', cors(corsOptions));
+app.use(cors({origin: true, credentials: true}));
+// app.options('*', cors(corsOptions));
 
 // client.connect(); 
 
