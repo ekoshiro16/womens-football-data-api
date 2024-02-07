@@ -19,6 +19,19 @@ const corsOptions = {
     methods: ['GET', 'POST', 'PATCH', 'PUT', 'DELETE', 'OPTIONS'],
     allowedHeaders: ['Content-Type', 'Authorization'],
 };
+
+const corsOptions = {
+    origin: function (origin, callback) {
+        const allowedOrigins = ['http://localhost:5173', 'http://left-boot-api.onrender.com'];
+        if (!origin || allowedOrigins.indexOf(origin) !== -1) {
+            callback(null, true);
+        } else {
+            callback(new Error('CORS policy violation'));
+        }
+    },
+    methods: ['GET', 'POST', 'PATCH', 'PUT', 'DELETE', 'OPTIONS'],
+    allowedHeaders: ['Content-Type', 'Authorization'],
+};
   
 app.use(cors(corsOptions));
 app.options('*', cors(corsOptions));
